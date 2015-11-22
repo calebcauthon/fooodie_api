@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'sessions' }
+
   resources :posts
   match 'posts(/:id)' => 'posts#options', via: [:options]
+
 
   root :to => "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
