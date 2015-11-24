@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
   
@@ -32,6 +33,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    puts current_user.inspect
     @posts = Post.all
     render :json => @posts
   end

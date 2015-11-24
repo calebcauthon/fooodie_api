@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :posts
   match 'posts(/:id)' => 'posts#options', via: [:options]
 
+  namespace :api do
+    get :csrf, to: 'csrf#index'
+  end
 
   root :to => "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
