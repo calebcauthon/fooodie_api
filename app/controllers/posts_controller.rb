@@ -33,9 +33,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    puts current_user.inspect
     @posts = Post.all
-    render :json => @posts
+    render :json => @posts.to_json(:include => :user)
   end
 
   # GET /posts/1
@@ -57,6 +56,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+
+    @post.user = current_user
 
     @post.save
     
