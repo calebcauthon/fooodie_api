@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :posts
   match 'posts(/:id)' => 'posts#options', via: [:options]
 
+  resources :recipes
+  
   namespace :api do
     get :csrf, to: 'csrf#index'
   end
