@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :posts
   match 'posts(/:id)' => 'posts#options', via: [:options]
   
-  get 'activities' => 'activities#show'
+  resources :activities
   
   resources :recipes
   resources :users
