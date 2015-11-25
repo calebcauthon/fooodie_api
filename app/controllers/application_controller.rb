@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+    def authenticate_admin!
+      unless current_user.role == 'admin'
+        throw '403 unauthorized!!'
+      end
+    end
+
     def authenticate_user_from_token!
       authenticate_with_http_token do |token, options|
         user_email = options[:email].presence
