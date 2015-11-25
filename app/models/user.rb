@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :recipes
+  has_many :activities
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
